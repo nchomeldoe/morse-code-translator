@@ -15,7 +15,10 @@ const englishTarget = document.querySelector("#english-target-text");
 const renderMorseOnPage = (e) => {
   let lastChar = e.target.value.substring(e.target.value.length - 1);
   if (lastChar) {
-    const dictionaryEntry = searchInDictionary(lastChar, "english");
+    const dictionaryEntry = searchInDictionary(
+      lastChar.toLowerCase(),
+      "english",
+    );
     if (!dictionaryEntry) {
       e.target.value = e.target.value.slice(0, -1);
       alert(`Symbol ${lastChar} unavailable`);
