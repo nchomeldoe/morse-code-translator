@@ -24,6 +24,6 @@ describe("english to morse code translator", () => {
   });
   it("should return '[symbol] unavailable' if a symbol that is not in the disctionary is entered", () => {
     const result = translateEnglishToMorse("This is a test:");
-    expect(result).toContain("':' unavailable");
+    expect(result).toContain(`":" unavailable`);
   });
 });

@@ -60,5 +60,17 @@ morseCodeArray.forEach((morseCodeItem, i) => {
 
 // functions
 export const translateEnglishToMorse = (englishText) => {
-  return "working";
+  const englishChars = englishText.split("");
+  const morseChars = englishChars.map((char) => {
+    const regEx = /[A-Z]/;
+    if (regEx.test(char)) {
+      char = char.toLowerCase();
+    }
+    const dictionaryEntry = englishMorseDictionary.find(
+      (item) => item.english === char,
+    );
+
+    return dictionaryEntry ? dictionaryEntry.morse : `"${char}" unavailable`;
+  });
+  return morseChars.join(" ");
 };
