@@ -1,10 +1,14 @@
-import { translateEnglishToMorse, searchInDictionary } from "./translator.js";
+import {
+  translateEnglishToMorse,
+  translateMorseToEnglish,
+  searchInDictionary,
+} from "./translator.js";
 
 // query selectors
 const englishSource = document.querySelector("#english-source-text");
 const morseTarget = document.querySelector("#morse-code-target-text");
-console.dir(englishSource);
-console.dir(morseTarget);
+const morseSource = document.querySelector("#morse-code-source-text");
+const englishTarget = document.querySelector("#english-target-text");
 
 // functions to render on page
 
@@ -22,3 +26,4 @@ const renderMorseOnPage = (e) => {
 
 // event listeners
 englishSource.addEventListener("input", renderMorseOnPage);
+morseSource.addEventListener("input", renderEnglishOnPage);
