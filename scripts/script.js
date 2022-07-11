@@ -1,76 +1,24 @@
-// creating dicitonary arary containing objects with english and morse versions of each character
-const englishMorseDictionary = [];
-const morseCodeArray = [
-  ".-",
-  "-...",
-  "-.-.",
-  "-..",
-  ".",
-  "..-.",
-  "--.",
-  "....",
-  "..",
-  ".---",
-  "-.-",
-  ".-..",
-  "--",
-  "-.",
-  "---",
-  ".--.",
-  "--.-",
-  ".-.",
-  "...",
-  "-",
-  "..-",
-  "...-",
-  ".--",
-  "-..-",
-  "-.--",
-  "--..",
-  "-----",
-  ".----",
-  "..---",
-  "...--",
-  "....-",
-  ".....",
-  "-....",
-  "--...",
-  "---..",
-  "----.",
-  ".-.-.-",
-  "..--..",
-  "/",
-];
+import { translateEnglishToMorse, searchInDictionary } from "./translator.js";
 
-for (let i = 97; i <= 122; i++) {
-  englishMorseDictionary.push({ english: String.fromCharCode(i) });
-}
-for (let i = 48; i <= 57; i++) {
-  englishMorseDictionary.push({ english: String.fromCharCode(i) });
-}
-englishMorseDictionary.push(
-  { english: "." },
-  { english: "?" },
-  { english: " " },
-);
+// query selectors
+const englishSource = document.querySelector("#english-source-text");
+const morseTarget = document.querySelector("#morse-code-target-text");
+console.dir(englishSource);
+console.dir(morseTarget);
 
-morseCodeArray.forEach((morseCodeItem, i) => {
-  englishMorseDictionary[i].morse = morseCodeItem;
-});
+// functions to render on page
 
-// functions
-export const translateEnglishToMorse = (englishText) => {
-  const englishChars = englishText.split("");
-  const morseChars = englishChars.map((char) => {
-    const regEx = /[A-Z]/;
-    if (regEx.test(char)) {
-      char = char.toLowerCase();
+const renderMorseOnPage = (e) => {
+  let lastChar = e.target.value.substring(e.target.value.length - 1);
+  if (lastChar) {
+    const dictionaryEntry = searchInDictionary(lastChar, "english");
+    if (!dictionaryEntry) {
+      e.target.value = e.target.value.slice(0, -1);
+      alert(`Symbol ${lastChar} unavailable`);
     }
-    const dictionaryEntry = englishMorseDictionary.find(
-      (item) => item.english === char,
-    );
-
-    return dictionaryEntry ? dictionaryEntry.morse : `"${char}" unavailable`;
-  });
-  return morseChars.join(" ");
+  }
+  morseTarget.innerHTML = translateEnglishToMorse(e.target.value);
 };
+
+// event listeners
+englishSource.addEventListener("input", renderMorseOnPage);
