@@ -85,7 +85,6 @@ export const translateEnglishToMorse = (englishText) => {
 
 export const translateMorseToEnglish = (morseText) => {
   const morseChars = morseText.split(" ");
-  console.log(morseChars);
   const englishChars = morseChars.map((char) => {
     const dictionaryEntry = searchInDictionary(char, "morse");
     if (dictionaryEntry) {

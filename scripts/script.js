@@ -24,6 +24,16 @@ const renderMorseOnPage = (e) => {
   morseTarget.innerHTML = translateEnglishToMorse(e.target.value);
 };
 
+const renderEnglishOnPage = (e) => {
+  const acceptableChars = [" ", ".", "-", "/"];
+  let lastChar = e.target.value.substring(e.target.value.length - 1);
+  if (lastChar && !acceptableChars.includes(lastChar)) {
+    e.target.value = e.target.value.slice(0, -1);
+    alert(`Symbol ${lastChar} unavailable`);
+  }
+  englishTarget.innerHTML = translateMorseToEnglish(e.target.value);
+};
+
 // event listeners
 englishSource.addEventListener("input", renderMorseOnPage);
 morseSource.addEventListener("input", renderEnglishOnPage);
