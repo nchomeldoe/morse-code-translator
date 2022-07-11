@@ -1,4 +1,4 @@
-// creating dicitonary arary containing objects with english and morse versions of each character
+// creating dictonary array containing objects with english and morse versions of each character
 const englishMorseDictionary = [];
 const morseCodeArray = [
   ".-",
@@ -58,12 +58,15 @@ morseCodeArray.forEach((morseCodeItem, i) => {
   englishMorseDictionary[i].morse = morseCodeItem;
 });
 
+// function allowing dictionary to be searched for an emglish or morse character
 export const searchInDictionary = (char, sourceLanguage) => {
   const dictionaryEntry = englishMorseDictionary.find(
     (item) => item[sourceLanguage] === char,
   );
   return dictionaryEntry;
 };
+
+// translator functions
 
 export const translateEnglishToMorse = (englishText) => {
   const englishChars = englishText.split("");
