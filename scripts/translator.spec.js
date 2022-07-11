@@ -52,7 +52,7 @@ describe("morse code to english translator", () => {
     const result = translateMorseToEnglish(
       ".... --- .-- / --- .-.. -.. / .- .-. . / -.-- --- ..- ..--.. / ...-- ...-- .-.-.-",
     );
-    expect(result).toBe("How old are you? 33.");
+    expect(result).toBe("how old are you? 33.");
   });
 
   it("should not respond to any symbols other than dots, dahses, spaces and forward slashes", () => {
