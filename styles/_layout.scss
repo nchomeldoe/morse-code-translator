@@ -1,4 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
+
 .outer-container {
+  font-family: "Source Code Pro", monospace;
   max-width: 100rem;
   display: flex;
   flex-direction: column;
@@ -7,13 +10,41 @@
   margin: 1rem;
   padding: 0.5rem;
   text-align: center;
+  font-size: 1rem;
 
   .translator-container {
     margin-top: 2rem;
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    justify-content: space-between;
     border: 0.2rem solid black;
+    width: 18rem;
+    height: 40vh;
+    overflow: scroll;
+    @media screen and (min-width: 768px) {
+      width: 45rem;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 60rem;
+    }
+    * {
+      margin-bottom: 0.2rem;
+    }
+
+    &__heading {
+      font-size: 1.2rem;
+    }
+
+    &__source-label {
+      font-size: 0.8rem;
+    }
+    &__translation-heading {
+      font-size: 1rem;
+    }
+    &____tranlsation-text {
+      margin-bottom: 0;
+      font-size: 0.5rem;
+    }
   }
 }
