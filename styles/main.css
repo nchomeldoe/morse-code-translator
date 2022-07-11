@@ -20,7 +20,7 @@
   border: 0.2rem solid black;
   width: 18rem;
   height: 40vh;
-  overflow: scroll;
+  overflow: auto;
 }
 @media screen and (min-width: 768px) {
   .outer-container .translator-container {
